@@ -68,7 +68,7 @@ grep 'library-no-package-associated' /tmp/namcap-output-tmp  | awk '{ print $4}'
 
 if [ "$(cat /tmp/namcap-output-libdepends-tmp)" != "" ]; then
 
-    LANG=C pamac search -f $(cat /tmp/namcap-output-libdepends-tmp) | awk '{print $NF}' | sort -h | uniq | grep -v "dbus-x11" | grep -v "palemoon-bin" | grep -v "gtk2-compatibility" | grep -v "cuda-tools" >> /tmp/namcap-output-depends-tmp
+    LANG=C pamac search -f $(cat /tmp/namcap-output-libdepends-tmp) | awk '{print $NF}' | sort -h | uniq | grep -v "dbus-x11" | grep -v "palemoon-bin" | grep -v "gtk2-compatibility" | grep -v "cuda-tools" | grep -v "No package owns" >> /tmp/namcap-output-depends-tmp
 
 fi
 
