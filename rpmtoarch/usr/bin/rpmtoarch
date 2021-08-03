@@ -64,7 +64,12 @@ grep 'dependency-detected-not-included' /tmp/namcap-output-tmp  | awk '{ print $
 
 # Detect not installed depends
 grep 'library-no-package-associated' /tmp/namcap-output-tmp  | awk '{ print $4}' > /tmp/namcap-output-libdepends-tmp
-LANG=C pamac search -f $(cat /tmp/namcap-output-libdepends-tmp) | awk '{print $NF}' | sort -h | uniq >> /tmp/namcap-output-depends-tmp
+
+if [ "$(cat /tmp/namcap-output-libdepends-tmp)" != "" ]; then
+
+    LANG=C pamac search -f $(cat /tmp/namcap-output-libdepends-tmp) | awk '{print $NF}' | sort -h | uniq >> /tmp/namcap-output-depends-tmp
+
+fi
 
 for namcapDeps in $(cat /tmp/namcap-output-depends-tmp); do 
 
@@ -86,4 +91,4 @@ tar -uf *pkg.tar .PKGINFO
 pamac-installer *.pkg.tar
 
 cd ~
-rm -R "$HOME/rpmtoarch-working-directory/"
+#rm -R "$HOME/rpmtoarch-working-directory/"

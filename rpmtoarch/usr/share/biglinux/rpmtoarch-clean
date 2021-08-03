@@ -1,108 +1,5 @@
 #IMPORTED FROM DEBTAP - https://github.com/helixarch/debtap
 # Fixing possible differences in filesystem hierarchy of the extracted package data, so that it matches Arch Linux filesystem hierarchy
-echo -e "${lightgreen}==>${NC} ${bold}Fixing possible directories structure differencies...${normal}"
-if [[ $pkgbuild == set ]] || [[ $Pkgbuild == set ]]; then
-	if [[ $(find ./ -iname '*license*' | wc -l) != 0 ]]; then
-		echo "install -D -m644 \"$(find ./ -iname '*license*' | sort | tail -1 | sed s'/^\.//')\" \"\${pkgdir}/usr/share/licenses/\${pkgname}/LICENSE\"" >> pkgbuildinstallations1
-	fi
-	if [[ $(find ./ -iname '*copyright*' | wc -l) != 0 ]]; then
-		if [[ $(find ./ -iname '*license*' | wc -l) != 0 ]]; then
-			echo "install -D -m644 \"$(find ./ -iname '*copyright*' | sort | tail -1 | sed s'/^\.//')\" \"\${pkgdir}/usr/share/licenses/\${pkgname}/COPYRIGHT\"" >> pkgbuildinstallations1
-		else
-			echo "install -D -m644 \"$(find ./ -iname '*copyright*' | sort | tail -1 | sed s'/^\.//')\" \"\${pkgdir}/usr/share/licenses/\${pkgname}/LICENSE\"" >> pkgbuildinstallations1
-		fi
-	fi
- 	if [[ $(find ./ -iname '*eula*' | wc -l) != 0 ]]; then
- 		if [[ $(find ./ -iname '*license*' | wc -l) != 0 ]] || [[ $(find ./ -iname '*copyright*' | wc -l) != 0 ]]; then
- 			echo "install -D -m644 \"$(find ./ -iname '*eula*' | sort | tail -1 | sed s'/^\.//')\" \"\${pkgdir}/usr/share/licenses/\${pkgname}/EULA\"" >> pkgbuildinstallations1
- 		else
- 			echo "install -D -m644 \"$(find ./ -iname '*eula*' | sort | tail -1 | sed s'/^\.//')\" \"\${pkgdir}/usr/share/licenses/\${pkgname}/LICENSE\"" >> pkgbuildinstallations1
- 		fi
- 	fi
-# 	if [[ -e usr/games ]]; then
-# 		echo 'mkdir usr/bin 2> /dev/null; mv usr/games/* usr/bin; rm -rf usr/games' >> pkgbuildinstallations1
-# 		if [[ -e usr/share/applications ]]; then
-# 			echo -e "ls usr/share/applications/*.desktop | while read line; do\n\tsed -i s'/^Exec=\\/usr\\/games\\//Exec=\\/usr\\/bin\\//g' \"$line\"\ndone" >> pkgbuildinstallations1
-# 		fi
-# 	fi
- 	if [[ -e bin ]]; then
- 		echo 'mkdir -p usr/bin 2> /dev/null; mv bin/* usr/bin; rm -rf bin' >> pkgbuildinstallations1
-#  		if [[ -e usr/share/applications ]]; then
-#  			echo -e "ls usr/share/applications/*.desktop | while read line; do\n\tsed -i s'/^Exec=\\/bin\\//Exec=\\/usr\\/bin\\//g' \"$line\"\ndone" >> pkgbuildinstallations1
-#  		fi
- 	fi
- 	if [[ -e sbin ]]; then
- 		echo 'mkdir -p usr/bin 2> /dev/null; mv sbin/* usr/bin; rm -rf sbin' >> pkgbuildinstallations1
-# 		if [[ -e usr/share/applications ]]; then
-# 			echo -e "ls usr/share/applications/*.desktop | while read line; do\n\tsed -i s'/^Exec=\\/sbin\\//Exec=\\/usr\\/bin\\//g' \"$line\"\ndone" >> pkgbuildinstallations1
- 		fi
-# 	fi
-# 	if [[ -e usr/sbin ]]; then
-# 		echo 'mkdir usr/bin 2> /dev/null; mv usr/sbin/* usr/bin; rm -rf usr/sbin' >> pkgbuildinstallations1
-# 		if [[ -e usr/share/applications ]]; then
-# 			echo -e "ls usr/share/applications/*.desktop | while read line; do\n\tsed -i s'/^Exec=\\/usr\\/sbin\\//Exec=\\/usr\\/bin\\//g' \"$line\"\ndone" >> pkgbuildinstallations1
-# 		fi
-# 	fi
-# 	if [[ -e usr/local/games ]]; then
-# 		echo 'mkdir usr/bin 2> /dev/null; mv usr/local/games/* usr/bin; rm -rf usr/local/games' >> pkgbuildinstallations1
-# 		if [[ -e usr/share/applications ]]; then
-# 			echo -e "ls usr/share/applications/*.desktop | while read line; do\n\tsed -i s'/^Exec=\\/usr\\/local\\/games\\//Exec=\\/usr\\/bin\\//g' \"$line\"\ndone" >> pkgbuildinstallations1
-# 		fi
-# 	fi
-# 	if [[ -e usr/local/bin ]]; then
-# 		echo 'mkdir usr/bin 2> /dev/null; mv usr/local/bin/* usr/bin; rm -rf usr/local/bin' >> pkgbuildinstallations1
-# 		if [[ -e usr/share/applications ]]; then
-# 			echo -e "ls usr/share/applications/*.desktop | while read line; do\n\tsed -i s'/^Exec=\\/usr\\/local\\/bin\\//Exec=\\/usr\\/bin\\//g' \"$line\"\ndone" >> pkgbuildinstallations1
-# 		fi
-# 	fi
-# 	if [[ -e usr/local/sbin ]]; then
-# 		echo 'mkdir usr/bin 2> /dev/null; mv usr/local/sbin/* usr/bin; rm -rf usr/local/sbin' >> pkgbuildinstallations1
-# 		if [[ -e usr/share/applications ]]; then
-# 			echo -e "ls usr/share/applications/*.desktop | while read line; do\n\tsed -i s'/^Exec=\\/usr\\/local\\/sbin\\//Exec=\\/usr\\/bin\\//g' \"$line\"\ndone" >> pkgbuildinstallations1
-# 		fi
-# 	fi
- 	if [[ $pseudo != set ]]; then
- 		if [[ -e lib ]]; then
- 			echo 'mkdir -p usr/lib 2> /dev/null; mv lib/* usr/lib; rm -rf lib' >> pkgbuildinstallations1
- 		fi
- 		if [[ -e lib32 ]]; then
- 			if [[ $(grep -i ^Architecture: control | grep -q i386; echo $?) == 0 ]]; then
- 				echo 'mkdir -p usr/lib 2> /dev/null; mv lib32/* usr/lib; rm -rf lib32' >> pkgbuildinstallations32
- 			else
- 				echo 'mkdir -p usr/lib32 2> /dev/null; mv lib32/* usr/lib32; rm -rf lib32' >> pkgbuildinstallations64
- 			fi
- 		fi
- 		if [[ -e lib64 ]]; then
- 			echo 'mkdir -p usr/lib 2> /dev/null; mv lib64/* usr/lib; rm -rf lib64' >> pkgbuildinstallations64
- 		fi
- 		if [[ -e usr/lib32 ]] && [[ $(grep -i ^Architecture: control | grep -q i386; echo $?) == 0 ]]; then
- 			echo 'mkdir usr/lib 2> /dev/null; mv usr/lib32/* usr/lib; rm -rf usr/lib32' >> pkgbuildinstallations32
- 		fi
- 		if [[ -e usr/lib64 ]]; then
- 			echo 'mkdir usr/lib 2> /dev/null; mv usr/lib64/* usr/lib; rm -rf usr/lib64' >> pkgbuildinstallations64
- 		fi
- 		if [[ -e usr/local/lib32 ]] && [[ $(grep -i ^Architecture: control | grep -q i386; echo $?) == 0 ]]; then
- 			echo 'mkdir usr/local/lib 2> /dev/null; mv usr/local/lib32/* usr/local/lib; rm -rf usr/local/lib32' >> pkgbuildinstallations32
- 		fi
- 		if [[ -e usr/local/lib64 ]]; then
- 			echo 'mkdir usr/local/lib 2> /dev/null; mv usr/local/lib64/* usr/local/lib; rm -rf usr/local/lib64' >> pkgbuildinstallations64
- 		fi
- 	else
- 		if [[ -e lib ]]; then
- 			tac pkgbuildinstallations32 2> /dev/null >> pkgbuildinstallations32-1; echo 'mkdir -p usr/lib 2> /dev/null; mv lib/* usr/lib; rm -rf lib' >> pkgbuildinstallations32-1; tac pkgbuildinstallations32-1 > pkgbuildinstallations32; rm -rf pkgbuildinstallations32-1
- 			echo 'mkdir -p usr/lib32 2> /dev/null; mv lib/* usr/lib32; rm -rf lib' >> pkgbuildinstallations64
- 		fi
- 		if [[ -e lib32 ]]; then
- 			echo 'mkdir -p usr/lib32 2> /dev/null; mv lib32/* usr/lib32; rm -rf lib32' >> pkgbuildinstallations64
- 		fi
- 		if [[ -e usr/lib ]]; then
- 			echo 'mkdir usr/lib32 2> /dev/null; mv usr/lib/* usr/lib32; rm -rf usr/lib' >> pkgbuildinstallations64
- 		fi
- 		if [[ -e usr/local/lib ]]; then
- 			echo 'mkdir usr/local/lib32 2> /dev/null; mv usr/local/lib/* usr/local/lib32; rm -rf usr/local/lib' >> pkgbuildinstallations64
- 		fi
- 	fi
-fi
 
 # if [[ -e usr/games ]]; then
 # 	mkdir usr/bin 2> /dev/null; mv usr/games/* usr/bin; rm -rf usr/games
@@ -113,23 +10,7 @@ fi
  if [[ -e sbin ]]; then
  	mkdir -p usr/bin 2> /dev/null; mv sbin/* usr/bin; rm -rf sbin
  fi
-# if [[ -e usr/sbin ]]; then
-# 	mkdir usr/bin 2> /dev/null; mv usr/sbin/* usr/bin; rm -rf usr/sbin
-# fi
-# if [[ -e usr/local/games ]]; then
-# 	mkdir usr/bin 2> /dev/null; mv usr/local/games/* usr/bin; rm -rf usr/local/games
-# fi
-# if [[ -e usr/local/bin ]]; then
-# 	mkdir usr/bin 2> /dev/null; mv usr/local/bin/* usr/bin; rm -rf usr/local/bin
-# fi
-# if [[ -e usr/local/sbin ]]; then
-# 	mkdir usr/bin 2> /dev/null; mv usr/local/sbin/* usr/bin; rm -rf usr/local/sbin
-# fi
-# if [[ -e usr/share/applications ]]; then
-# 	ls usr/share/applications/*.desktop | while read line; do
-# 		sed -i -e s'/^Exec=\/bin\//Exec=\/usr\/bin\//g' -e s'/^Exec=\/sbin\//Exec=\/usr\/bin\//g' -e s'/^Exec=\/usr\/sbin\//Exec=\/usr\/bin\//g' -e s'/^Exec=\/usr\/games\//Exec=\/usr\/bin\//g' -e s'/^Exec=\/usr\/local\/bin\//Exec=\/usr\/bin\//g' -e s'/^Exec=\/usr\/local\/sbin\//Exec=\/usr\/bin\//g' -e s'/^Exec=\/usr\/local\/games\//Exec=\/usr\/bin\//g' "$line" 2> /dev/null
-# 	done
-# fi
+
  if [[ $pseudo != set ]]; then
  	if [[ -e lib ]]; then
  		mkdir -p usr/lib 2> /dev/null; mv lib/* usr/lib; rm -rf lib
@@ -144,14 +25,8 @@ fi
  	if [[ -e lib64 ]]; then
  		mkdir -p usr/lib 2> /dev/null; mv lib64/* usr/lib; rm -rf lib64
  	fi
- 	if [[ -e usr/lib32 ]] && [[ $(grep -i ^Architecture: control | grep -q i386; echo $?) == 0 ]]; then
- 		mkdir usr/lib 2> /dev/null; mv usr/lib32/* usr/lib; rm -rf usr/lib32
- 	fi
  	if [[ -e usr/lib64 ]]; then
  		mkdir usr/lib 2> /dev/null; mv usr/lib64/* usr/lib; rm -rf usr/lib64
- 	fi
- 	if [[ -e usr/local/lib32 ]] && [[ $(grep -i ^Architecture: control | grep -q i386; echo $?) == 0 ]]; then
- 		mkdir usr/local/lib 2> /dev/null; mv usr/local/lib32/* usr/local/lib; rm -rf usr/local/lib32
  	fi
  	if [[ -e usr/local/lib64 ]]; then
  		mkdir usr/local/lib 2> /dev/null; mv usr/local/lib64/* usr/local/lib; rm -rf usr/local/lib64
