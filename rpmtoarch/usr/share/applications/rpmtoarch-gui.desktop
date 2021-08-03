@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Install .rpm file
+Name[pt]=Instalar arquivo .rpm
+Exec=rpmtoarch-gui %F
+Icon=application-x-deb
+NoDisplay=true
+Terminal=false
+Type=Application
+Categories=System;
+MimeType=application/x-rpm;
+StartupNotify=true 

@@ -1,0 +1,76 @@
+#!/bin/bash
+
+rpmtoarch.rb "$1"
+
+cd "$HOME/rpmtoarch-working-directory/"
+
+
+###### MAKE PKGBUILD
+
+# CAPTURE INFO
+rpm -qip package.rpm > info.txt
+
+rpm_name="$(grep -m1 Name info.txt | awk '{ print $3 }')"
+rpm_version="$(grep -m1 Version info.txt | awk '{ print $3 }')"
+rpm_release="$(grep -m1 Release info.txt | awk '{ print $3 }')"
+rpm_license="$(grep -m1 License info.txt | cut -f2-90 -d":")"
+rpm_summary="$(grep -m1 Summary info.txt | cut -f2-90 -d":")"
+rpm_url="$(grep URL info.txt | awk '{ print $3 }')"
+
+# WRITE PKGBUILD
+cat <<EOF > PKGBUILD
+pkgname="$rpm_name"
+pkgver="$rpm_version"
+pkgrel="$rpm_release"
+pkgdesc="$rpm_summary"
+arch=("x86_64")
+url="$rpm_url"
+license=('$rpm_license')
+install="package.install"
+md5sums=()
+validpgpkeys=()
+EOF
+
+echo 'prepare() {
+  cp ../package.rpm $srcdir/
+}
+
+package() {
+  rpm2cpio package.rpm | cpio -idmv -D $pkgdir/
+}' >> PKGBUILD
+
+# Open package.install to edit
+if [ "$2" = "edit" ]; then
+    if [ -e package.install ]; then
+        kate -n package.install
+    fi
+fi
+
+# RUN MAKEPKG
+PKGEXT='.pkg.tar' makepkg
+
+# Extract .PKGINFO from tar
+tar -x -f *pkg.tar .PKGINFO
+
+# Detect depends and add to .PKGINFO
+for namcapDeps in $(namcap *.pkg.tar | grep Dependency | sed 's|.*Dependency ||g' | cut -f1 -d" "); do 
+
+    echo "depend = $namcapDeps" >> .PKGINFO
+
+done
+
+# Open PKGINFO to edit
+if [ "$2" = "edit" ]; then
+    kate -n .PKGINFO
+fi
+
+# Remove .PKGINFO in tar
+tar --delete -f *pkg.tar .PKGINFO
+
+# Add .PKGINFO in tar
+tar -uf *pkg.tar .PKGINFO
+
+pamac-installer *.pkg.tar
+
+cd ~
+rm -R "$HOME/rpmtoarch-working-directory/"
