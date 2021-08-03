@@ -29,6 +29,7 @@ arch=("x86_64")
 url="$rpm_url"
 license=('$rpm_license')
 install="package.install"
+packager=('Converted by rpmtoarch')
 md5sums=()
 validpgpkeys=()
 EOF
