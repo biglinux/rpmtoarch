@@ -34,13 +34,13 @@ instalação?
         set -H
 
         if [ "$yadresult" = "1" ]; then
-            rpmtoarch "$rpmfile" edit | zenity --progress --pulsate --no-cancel --auto-close
+            rpmtoarch "$rpmfile" edit | zenity --progress --pulsate --no-cancel --auto-close --text "Convertendo o arquivo, aguarde, pode demorar alguns minutos..."
             zenity --info --text $"Concluído!"
         fi
 
     
         if [ "$yadresult" = "2" ]; then
-            rpmtoarch "$rpmfile" | zenity --progress --pulsate --no-cancel --auto-close
+            rpmtoarch "$rpmfile" | zenity --progress --pulsate --no-cancel --auto-close --text "Convertendo o arquivo, aguarde, pode demorar alguns minutos..."
             zenity --info --text $"Concluído!"
         fi
 
