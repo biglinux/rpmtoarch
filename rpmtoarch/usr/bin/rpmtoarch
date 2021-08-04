@@ -17,7 +17,7 @@ rpm_version="$(grep -m1 Version info.txt | awk '{ print $3 }')"
 #rpm_release="$(grep -m1 Release info.txt | awk '{ print $3 }')"
 rpm_license="$(grep -m1 License info.txt | cut -f2-90 -d":")"
 rpm_summary="$(grep -m1 Summary info.txt | cut -f2-90 -d":")"
-rpm_url="$(grep URL info.txt | awk '{ print $3 }')"
+rpm_url="$(grep URL info.txt | awk '{ print $3 }' | sed -n 1p)"
 
 # WRITE PKGBUILD
 cat <<EOF > PKGBUILD

@@ -1,47 +1,47 @@
 #IMPORTED FROM DEBTAP - https://github.com/helixarch/debtap
 # Fixing possible differences in filesystem hierarchy of the extracted package data, so that it matches Arch Linux filesystem hierarchy
 
-# if [[ -e usr/games ]]; then
-# 	mkdir usr/bin 2> /dev/null; mv usr/games/* usr/bin; rm -rf usr/games
-# fi
+ if [[ -e usr/games ]]; then
+ 	mkdir -p usr/bin; mv usr/games/* usr/bin || true; rm -rf usr/games
+ fi
  if [[ -e bin ]]; then
- 	mkdir -p usr/bin 2> /dev/null; mv bin/* usr/bin; rm -rf bin
+ 	mkdir -p usr/bin; mv bin/* usr/bin || true; rm -rf bin
  fi
  if [[ -e sbin ]]; then
- 	mkdir -p usr/bin 2> /dev/null; mv sbin/* usr/bin; rm -rf sbin
+ 	mkdir -p usr/bin; mv sbin/* usr/bin || true; rm -rf sbin
  fi
 
- if [[ $pseudo != set ]]; then
- 	if [[ -e lib ]]; then
- 		mkdir -p usr/lib 2> /dev/null; mv lib/* usr/lib; rm -rf lib
- 	fi
- 	if [[ -e lib32 ]]; then
- 		if [[ $(grep -i ^Architecture: control | grep -q i386; echo $?) == 0 ]]; then
- 			mkdir -p usr/lib 2> /dev/null; mv lib32/* usr/lib; rm -rf lib32
- 		else
- 			mkdir -p usr/lib32 2> /dev/null; mv lib32/* usr/lib32; rm -rf lib32
- 		fi
- 	fi
- 	if [[ -e lib64 ]]; then
- 		mkdir -p usr/lib 2> /dev/null; mv lib64/* usr/lib; rm -rf lib64
- 	fi
- 	if [[ -e usr/lib64 ]]; then
- 		mkdir usr/lib 2> /dev/null; mv usr/lib64/* usr/lib; rm -rf usr/lib64
- 	fi
- 	if [[ -e usr/local/lib64 ]]; then
- 		mkdir usr/local/lib 2> /dev/null; mv usr/local/lib64/* usr/local/lib; rm -rf usr/local/lib64
- 	fi
- else
- 	if [[ -e lib ]]; then
- 		mkdir -p usr/lib32 2> /dev/null; mv lib/* usr/lib32; rm -rf lib
- 	fi
- 	if [[ -e lib32 ]]; then
- 		mkdir -p usr/lib32 2> /dev/null; mv lib32/* usr/lib32; rm -rf lib32
- 	fi
- 	if [[ -e usr/lib ]]; then
- 		mkdir usr/lib32 2> /dev/null; mv usr/lib/* usr/lib32; rm -rf usr/lib
- 	fi
- 	if [[ -e usr/local/lib ]]; then
- 		mkdir usr/local/lib32 2> /dev/null; mv usr/local/lib/* usr/local/lib32; rm -rf usr/local/lib
- 	fi
- fi 
+
+if [[ -e lib ]]; then
+    mkdir -p usr/lib; mv lib/* usr/lib || true; rm -rf lib
+fi
+if [[ -e lib32 ]]; then
+    if [[ $(grep -i ^Architecture: control | grep -q i386; echo $?) == 0 ]]; then
+        mkdir -p usr/lib; mv lib32/* usr/lib || true; rm -rf lib32
+    else
+        mkdir -p usr/lib32; mv lib32/* usr/lib32 || true; rm -rf lib32
+    fi
+fi
+if [[ -e lib64 ]]; then
+    mkdir -p usr/lib; mv lib64/* usr/lib || true; rm -rf lib64
+fi
+if [[ -e usr/lib64 ]]; then
+    mkdir -p usr/lib; mv usr/lib64/* usr/lib || true; rm -rf usr/lib64
+fi
+if [[ -e usr/local/lib64 ]]; then
+    mkdir -p usr/local/lib; mv usr/local/lib64/* usr/local/lib || true; rm -rf usr/local/lib64
+fi
+
+if [[ -e lib ]]; then
+    mkdir -p usr/lib32; mv lib/* usr/lib32 || true; rm -rf lib
+fi
+if [[ -e lib32 ]]; then
+    mkdir -p usr/lib32; mv lib32/* usr/lib32 || true; rm -rf lib32
+fi
+if [[ -e usr/lib ]]; then
+    mkdir -p usr/lib32; mv usr/lib/* usr/lib32 || true; rm -rf usr/lib
+fi
+if [[ -e usr/local/lib ]]; then
+    mkdir -p usr/local/lib32; mv usr/local/lib/* usr/local/lib32 || true; rm -rf usr/local/lib
+fi
+
