@@ -16,3 +16,5 @@ Ao editar o debtap-mod percebi que não deveria ser muito difícil fazer algo pa
 Então aqui temos um conversor/instalador de .rpm para sistemas que utilizam o gerenciador de pacotes Pamac.
 
 Sempre que possível utilize pacotes feitos para a sua distribuição, mas se não tem essa opção, verifique se o programa está disponível em .deb e instale utilizando o debtap-mod, se não for possível encontrar um .deb, utilize um .rpm com o uso desse projeto, ele é menos elaborado, mas ainda possui uma boa eficácia.
+
+![](rpmtoarch-ptbr.jpg)
