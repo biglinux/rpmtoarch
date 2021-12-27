@@ -5,9 +5,9 @@ pkgver=1.0.0_1big
 pkgrel=3
 arch=('any')
 license=('GPL')
-url="https://gitlab.com/biglinux/rpmtoarch"
+url="https://github.com/biglinux/rpmtoarch"
 pkgdesc="Convert and install .rpm packages"
-source=("git+https://gitlab.com/biglinux/rpmtoarch.git")
+source=("git+https://github.com/biglinux/rpmtoarch.git")
 md5sums=(SKIP)
 depends=('yad' 'namcap' 'pamac-gtk' 'kate' 'zenity' 'fakeroot' 'ruby' 'rpm-tools' 'cpio')
 
