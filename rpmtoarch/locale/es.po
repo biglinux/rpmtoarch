@@ -1,0 +1,43 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the rpmtoarch package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: rpmtoarch\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+msgid ""
+"<big>Este sistema utiliza o formato de pacotes <span color='#CC2222'>.pkg.tar</span>, porém o "
+"arquivo está no formato <span color='#CC2222'>.rpm</span>.\n"
+"\n"
+"Deseja prosseguir com a instalação?</big>\n"
+msgstr ""
+"<big>Este sistema utiliza el formato de paquete <span color='#CC2222'>.pkg.tar</span>, pero el "
+"archivo está <span color='#CC2222'>en el .rpm</span>.\n"
+"\n"
+"¿Desea continuar con la instalación?</big>\n"
+
+msgid " Instalar revisando os arquivos de configuração"
+msgstr " Instalar revisando los archivos de configuración"
+
+msgid " Instalar"
+msgstr " Instalar"
+
+msgid " Fechar"
+msgstr " Cerrar"
+
+msgid "Instalar pacote .rpm"
+msgstr "Instalar .rpm de paquetes"
+
+msgid "Concluído!"
+msgstr "¡Hecho!"

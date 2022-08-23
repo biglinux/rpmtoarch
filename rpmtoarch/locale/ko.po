@@ -1,0 +1,43 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the rpmtoarch package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: rpmtoarch\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: attranslate\n"
+
+msgid ""
+"<big>Este sistema utiliza o formato de pacotes <span color='#CC2222'>.pkg.tar</span>, porém o "
+"arquivo está no formato <span color='#CC2222'>.rpm</span>.\n"
+"\n"
+"Deseja prosseguir com a instalação?</big>\n"
+msgstr ""
+"<big>이 시스템은 <span color='#CC2222'>.pkg.tar</span> 패키지 형식을 사용하지만 파일은 <span color='#CC2222'>.rpm에 "
+"있습니다</span>.\n"
+"\n"
+"설치를 계속하시겠습니까?</big>\n"
+
+msgid " Instalar revisando os arquivos de configuração"
+msgstr " 구성 파일을 검토하여 설치"
+
+msgid " Instalar"
+msgstr " 설치하다"
+
+msgid " Fechar"
+msgstr " 닫다"
+
+msgid "Instalar pacote .rpm"
+msgstr "패키지 .rpm 설치"
+
+msgid "Concluído!"
+msgstr "수행!"
