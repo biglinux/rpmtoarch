@@ -17,6 +17,16 @@ msgstr ""
 "X-Generator: attranslate\n"
 
 msgid ""
+"* Alertas de erro durante a instalação, em geral, não comprometem o funcionamento correto do "
+"programa."
+msgstr ""
+"* Οι ειδοποιήσεις σφάλματος κατά την εγκατάσταση, γενικά, δεν θέτουν σε κίνδυνο τη σωστή λειτουργία "
+"του προγράμματος."
+
+msgid "Leia antes de prosseguir com a instalação::TXT"
+msgstr "Διαβάστε πριν προχωρήσετε στην εγκατάσταση::TXT"
+
+msgid ""
 "<big>Este sistema utiliza o formato de pacotes <span color='#CC2222'>.pkg.tar</span>, porém o "
 "arquivo está no formato <span color='#CC2222'>.rpm</span>.\n"
 "\n"
@@ -38,6 +48,9 @@ msgstr " Κλείνω"
 
 msgid "Instalar pacote .rpm"
 msgstr "Εγκατάσταση .rpm πακέτου"
+
+msgid "Convertendo o arquivo, aguarde, pode demorar alguns minutos..."
+msgstr "Μετατροπή του αρχείου, περιμένετε, μπορεί να χρειαστούν λίγα λεπτά..."
 
 msgid "Concluído!"
 msgstr "Έγινε!"

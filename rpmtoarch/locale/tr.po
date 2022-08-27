@@ -17,6 +17,14 @@ msgstr ""
 "X-Generator: attranslate\n"
 
 msgid ""
+"* Alertas de erro durante a instalação, em geral, não comprometem o funcionamento correto do "
+"programa."
+msgstr "* Kurulum sırasındaki hata uyarıları, genel olarak, programın doğru çalışmasını tehlikeye atmaz."
+
+msgid "Leia antes de prosseguir com a instalação::TXT"
+msgstr "Yüklemeye devam etmeden önce okuyun::TXT"
+
+msgid ""
 "<big>Este sistema utiliza o formato de pacotes <span color='#CC2222'>.pkg.tar</span>, porém o "
 "arquivo está no formato <span color='#CC2222'>.rpm</span>.\n"
 "\n"
@@ -38,6 +46,9 @@ msgstr " Kapatmak"
 
 msgid "Instalar pacote .rpm"
 msgstr "Paket .rpm yükleme"
+
+msgid "Convertendo o arquivo, aguarde, pode demorar alguns minutos..."
+msgstr "Dosyayı dönüştürmek, bekleyin, birkaç dakika sürebilir..."
 
 msgid "Concluído!"
 msgstr "Yapılmış!"

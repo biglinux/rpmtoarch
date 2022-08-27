@@ -17,6 +17,14 @@ msgstr ""
 "X-Generator: attranslate\n"
 
 msgid ""
+"* Alertas de erro durante a instalação, em geral, não comprometem o funcionamento correto do "
+"programa."
+msgstr "* Veateated installimise ajal ei ohusta üldiselt programmi õiget toimimist."
+
+msgid "Leia antes de prosseguir com a instalação::TXT"
+msgstr "Enne installimise jätkamist lugege::TXT"
+
+msgid ""
 "<big>Este sistema utiliza o formato de pacotes <span color='#CC2222'>.pkg.tar</span>, porém o "
 "arquivo está no formato <span color='#CC2222'>.rpm</span>.\n"
 "\n"
@@ -38,6 +46,9 @@ msgstr " Sulgema"
 
 msgid "Instalar pacote .rpm"
 msgstr "Paketi .rpm installimine"
+
+msgid "Convertendo o arquivo, aguarde, pode demorar alguns minutos..."
+msgstr "Faili teisendamine, oodake, see võib võtta paar minutit ..."
 
 msgid "Concluído!"
 msgstr "Teinud!"

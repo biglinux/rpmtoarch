@@ -17,6 +17,14 @@ msgstr ""
 "X-Generator: attranslate\n"
 
 msgid ""
+"* Alertas de erro durante a instalação, em geral, não comprometem o funcionamento correto do "
+"programa."
+msgstr "* 설치 중 오류 경고, 일반적으로, 프로그램의 올바른 작동을 손상시키지 않습니다."
+
+msgid "Leia antes de prosseguir com a instalação::TXT"
+msgstr "설치를 계속하기 전에 읽으십시오::TXT"
+
+msgid ""
 "<big>Este sistema utiliza o formato de pacotes <span color='#CC2222'>.pkg.tar</span>, porém o "
 "arquivo está no formato <span color='#CC2222'>.rpm</span>.\n"
 "\n"
@@ -38,6 +46,9 @@ msgstr " 닫다"
 
 msgid "Instalar pacote .rpm"
 msgstr "패키지 .rpm 설치"
+
+msgid "Convertendo o arquivo, aguarde, pode demorar alguns minutos..."
+msgstr "파일을 변환하고 잠깐, 몇 분 정도 걸릴 수 있습니다 ..."
 
 msgid "Concluído!"
 msgstr "수행!"
