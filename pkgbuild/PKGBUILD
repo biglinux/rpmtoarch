@@ -8,7 +8,7 @@ license=('GPL')
 url="https://github.com/biglinux/rpmtoarch"
 pkgdesc="Convert and install .rpm packages"
 source=("git+https://github.com/biglinux/rpmtoarch.git")
-depends=('yad' 'namcap' 'pamac-gtk' 'kate' 'zenity' 'fakeroot' 'ruby' 'rpm-tools' 'cpio')
+depends=('yad' 'namcap' 'pamac-gtk' 'zenity' 'fakeroot' 'ruby' 'rpm-tools' 'cpio')
 md5sums=(SKIP)
 
 package() {
